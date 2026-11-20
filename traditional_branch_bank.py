@@ -617,10 +617,9 @@ class BankHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    port = 9090
-    server = HTTPServer(("127.0.0.1", port), BankHandler)
+    port = int(os.environ.get("PORT", 9090))
+    server = HTTPServer(("0.0.0.0", port), BankHandler)
     print("=" * 55)
-    print(f"Branch Counter : http://127.0.0.1:{port}")
-    print(f"Net Banking    : http://127.0.0.1:{port}/netbanking")
+    print(f"Server started live on port {port}")
     print("=" * 55)
     server.serve_forever()
